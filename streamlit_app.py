@@ -15,9 +15,6 @@ model.load_weights(efficientNetB0_model.h5)
 
 # Below we are defining a streamlit webpage which will take user input and predict polarity of taken review
 
-st.title(Movie review polarity prediction)
-st.write(Here we will predict polarity of your review for a movie whether or not it is positive.)
-
 
 
 with st.form(my_form)
