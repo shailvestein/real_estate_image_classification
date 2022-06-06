@@ -1,4 +1,4 @@
-tensorflow-gpu==2.5.0
+tensorflow==2.5.0
 streamlit
 pickle5
 opencv-python
