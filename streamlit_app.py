@@ -17,7 +17,7 @@ model.load_weights(efficientNetB0_model.h5)
 
 
 
-with st.form(my_form)
+with st.form(my_form):
     # st.write(Enter your review below)
     uploaded_files = st.file_uploader("Choose images", accept_multiple_files=True)
     for uploaded_file in uploaded_files:
