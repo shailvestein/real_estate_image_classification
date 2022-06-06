@@ -1,4 +1,5 @@
 tensorflow==2.5.0
+libgl1
 streamlit
 pickle5
 opencv-python
