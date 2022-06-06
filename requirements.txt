@@ -1,6 +1,6 @@
 tensorflow-gpu==2.5.0
 streamlit
 pickle5
-open-cv
+opencv-python
 matplotlib.pyplot
 seaborn
