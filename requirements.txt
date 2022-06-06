@@ -1,3 +1,4 @@
+--upgrade pip
 tensorflow-gpu==2.5.0
 streamlit
 pickle5
