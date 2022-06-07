@@ -35,19 +35,22 @@ if not image_file is None:
           images.append(img)
 
      #############################################################################################
-if submitted and len(images) > 0:
+if submitted:
+     if len(images) > 0:
 
-     # batch_images = np.array([np.stack(img) for img in images])
-     batch_images = np.stack(images, axis=0)    
+          # batch_images = np.array([np.stack(img) for img in images])
+          batch_images = np.stack(images, axis=0)    
 
-     yhats = model.predict(batch_images)
-     yhats = np.argmax(yhats, axis=1)
+          yhats = model.predict(batch_images)
+          yhats = np.argmax(yhats, axis=1)
 
-     predicted_class_names = [class_names[i] for i in yhats]
+          predicted_class_names = [class_names[i] for i in yhats]
+
+          st.image(images, caption=predicted_class_names)
+     else:
+          st.text('Please upload an image!')
      
-     st.image(images, caption=predicted_class_names)
-
      
 else:
-     st.text('Please upload an image!')
+     st.text('Select an image to upload first!')
 
