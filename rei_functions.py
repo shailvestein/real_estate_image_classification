@@ -1,14 +1,12 @@
-
+# importing modules and packages
 import tensorflow as tf
 import numpy as np
 from PIL import Image
 import matplotlib.pyplot as plt
 import seaborn as sns
 import pickle as pkl
-
 from tensorflow.keras.applications.efficientnet import EfficientNetB0, preprocess_input
-from tensorflow.keras.layers import Conv2D, Input, Dense, GlobalAveragePooling2D, MaxPool2D, Dropout
-
+from tensorflow.keras.layers import Input, Dense, GlobalAveragePooling2D, Dropout
 from tensorflow.keras.models import Model
 
 #### Constants
@@ -17,22 +15,24 @@ INPUT_SHAPE = (H,W,3)
 TARGET_SHAPE = (H,W)
 NUM_CLASSES = 6
   
+# function to get class names
 def get_class_names():
     with open('./class_list.pkl', 'rb') as f:
         class_names = pkl.load(f)
     return class_names
  
-#############################################################################
-#############################################################################
-
+# this function will preprocess image
 def preprocess_image(img):
   return preprocess_input(img)
 
+# getting model ready
 def get_model_ready():
+    # loading pre-trained efficientNetB0
     efn = EfficientNetB0(include_top=False, 
                            weights='imagenet', 
                            input_shape=INPUT_SHAPE)
 
+    # making each layers not to train
     for layers in efn.layers:
         layers.trainable=False
 
@@ -57,11 +57,3 @@ def get_model_ready():
     efficientNet_model = Model(inputs=inputs, outputs=outputs, name='efficientNet_based_model')
 
     return efficientNet_model
-
-
-
-
-#############################################################################
-#############################################################################
-
-
