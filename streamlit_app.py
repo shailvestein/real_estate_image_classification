@@ -44,7 +44,7 @@ if submitted:
           yhats = model.predict(batch_images)
           yhats = np.argmax(yhats, axis=1)
 
-          predicted_class_names = [class_names[i] for i in yhats]
+          predicted_class_names = ['This is a: '+str(class_names[i]) for i in yhats]
 
           st.image(images, caption=predicted_class_names)
      else:
