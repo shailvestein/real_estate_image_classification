@@ -24,8 +24,6 @@ model.load_weights('./efficientNetB0_model.h5')
 
 # st.write(Enter your review below)
 image_file = st.file_uploader("Upload Your Image", type=['jpg', 'png', 'jpeg'])
-if not image_file:
-   return None
 
 st.write("filename:", original_image.name)
 
