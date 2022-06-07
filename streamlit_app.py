@@ -23,13 +23,18 @@ model.load_weights('./efficientNetB0_model.h5')
 
 
 # st.write(Enter your review below)
-uploaded_files = st.file_uploader("Choose images", accept_multiple_files=True, type=['jpg', 'png', 'jpeg'])
-for uploaded_file in uploaded_files:
-     bytes_data = uploaded_file.read()
-     st.write("filename:", uploaded_file.name)
-     img = Image.open(bytes_data)
-     img = np.array(img)
-     st.image([img])
+image_file = st.file_uploader("Upload Your Image", type=['jpg', 'png', 'jpeg'])
+if not image_file:
+   return None
+
+st.write("filename:", original_image.name)
+
+original_image = Image.open(image_file)
+original_image = np.array(original_image)
+
+img = Image.open(original_image)
+img = np.array(img)
+st.image([img])
      
 length = 12
 st.text(f"{length} images uploaded!")
