@@ -5,6 +5,7 @@ import rei_functions as rf
 import numpy as np
 from PIL import Image
 import tensorflow as tf
+import matplotlib.pyplot as plt
 
 TARGET_SHAPE = (224,224)
 
@@ -44,10 +45,15 @@ yhats = np.argmax(yhats, axis=1)
 st.text(yhats)
 
 #############################################################################################
+col = 3
+row = len(images)//col + 1
+rem = len(images) % col
+st.text(row)
+if rem > 0:
+     row += 1
 
-num = len(images)//3
-rem = len(images) % 3
+# plt.subplots(
 
-st.text(num)
+st.text(row)
 st.text(rem)
 
