@@ -8,7 +8,7 @@ import rei_functions as rf
 
 # trained model
 model = rf.get_model_ready()
-model.load_weights(efficientNetB0_model.h5)
+model.load_weights('./efficientNetB0_model.h5')
 
 ##############################################################################################
 ##############################################################################################
