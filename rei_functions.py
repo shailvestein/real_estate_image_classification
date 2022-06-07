@@ -25,6 +25,8 @@ def get_class_names():
 #############################################################################
 #############################################################################
 
+def preprocess_image(img):
+  return preprocess_input(img)
 
 def get_model_ready():
     efn = EfficientNetB0(include_top=False, 
