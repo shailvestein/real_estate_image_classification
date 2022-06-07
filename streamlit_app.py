@@ -29,7 +29,7 @@ image_file = st.file_uploader("Upload Your Image", type=['jpg', 'png', 'jpeg'])
 
 if image_file is not None:
      img = Image.open(image_file)
-     st.image(img, width=100)
+     st.image(img, width=200)
 
 # original_image = Image.open(image_file)
 # original_image = np.array(original_image)
