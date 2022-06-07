@@ -48,9 +48,9 @@ if submitted:
 
           st.image(images, caption=predicted_class_names)
      else:
-          st.text('Please upload an image!')
+          st.text('Please upload an image first then click on "Get images scene name" button!')
      
      
 else:
-     st.text('Select an image to upload first!')
+     st.text('Please upload an image!')
 
