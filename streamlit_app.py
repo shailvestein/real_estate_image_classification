@@ -36,11 +36,11 @@ if not image_file is None:
 
      #############################################################################################
 if submitted and len(images) > 0:
-#      if len(images) > 0:
-          st.text(len(images))
-          # batch_images = np.array([np.stack(img) for img in images])
-          batch_images = np.stack(images, axis=0)
-          st.text(batch_images.shape)   
+#    if len(images) > 0:
+     st.text(len(images))
+     # batch_images = np.array([np.stack(img) for img in images])
+     batch_images = np.stack(images, axis=0)
+     st.text(batch_images.shape)   
      
 
           
