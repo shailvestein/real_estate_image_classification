@@ -36,8 +36,7 @@ if not image_file is None:
 
      #############################################################################################
 if submitted and len(images) > 0:
-#    if len(images) > 0:
-     st.text(len(images))
+
      # batch_images = np.array([np.stack(img) for img in images])
      batch_images = np.stack(images, axis=0)
      st.text(batch_images.shape)   
@@ -46,23 +45,10 @@ if submitted and len(images) > 0:
           
      yhats = model.predict(batch_images)
      yhats = np.argmax(yhats, axis=1)
-     st.text(yhats)
 
-     st.text('Please upload an real estate image!')
-     #############################################################################################
-     col = 3
-     row = len(images)//col + 1
-     rem = len(images) % col
-     st.text(row)
-     if rem > 0:
-          row += 1
       
      st.image(images, caption=yhats)
 
-     # plt.subplots(
-
-     st.text(row)
-     st.text(rem)
      
 else:
      st.text('Please upload an image!')
