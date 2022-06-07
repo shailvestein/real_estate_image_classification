@@ -57,11 +57,7 @@ if submitted and len(images) > 0:
      if rem > 0:
           row += 1
       
-     for i, img in enumerate(images):
-          ax = plt.subplot(row, col, i+1)
-          ax.imshow(img)
-          ax.set_title(class_names[yhats[i]])
-          plt.show()
+     st.image(images, caption=yhats)
 
      # plt.subplots(
 
