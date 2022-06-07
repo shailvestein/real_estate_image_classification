@@ -29,7 +29,12 @@ image_file = st.file_uploader("Upload Your Image", type=['jpg', 'png', 'jpeg'])
 
 if image_file is not None:
      img = Image.open(image_file)
-     st.image(img, width=200)
+     st.image(img, width=300)
+     img = preprocess_image(img)
+     yhat = model.predict(img)
+     
+     predicted_class_names = class_names[np.argmax(yhat)]
+     st.text(predicted_class_names)
 
 # original_image = Image.open(image_file)
 # original_image = np.array(original_image)
