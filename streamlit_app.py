@@ -28,18 +28,21 @@ model.load_weights('./efficientNetB0_model.h5')
 image_file = st.file_uploader("Upload Your Image", type=['jpg', 'png', 'jpeg'], accept_multiple_files=True)
 # st.write("filename:", image_file.name)
 
+
+
 if image_file is not None:
-     img = Image.open(image_file)
-     st.image(img, width=300)
-     img = rf.preprocess_image(img)
-     img = img.resize(TARGET_SHAPE)
-     img = tf.expand_dims(img, axis=0)
-     shape = img.shape
-     st.text(shape)
-     yhat = model.predict(img)
-     
-     predicted_class_names = class_names[np.argmax(yhat)]
-     st.text(predicted_class_names)
+     for image in image_file:
+          img = Image.open(image)
+          st.image(img, width=300)
+          img = rf.preprocess_image(img)
+          img = img.resize(TARGET_SHAPE)
+          img = tf.expand_dims(img, axis=0)
+          shape = img.shape
+          st.text(shape)
+          yhat = model.predict(img)
+
+          predicted_class_names = class_names[np.argmax(yhat)]
+          st.text(predicted_class_names)
 
 # original_image = Image.open(image_file)
 # original_image = np.array(original_image)
