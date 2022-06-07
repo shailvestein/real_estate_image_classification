@@ -26,7 +26,8 @@ uploaded_files = st.file_uploader("Choose images", accept_multiple_files=True, t
 for uploaded_file in uploaded_files:
      bytes_data = uploaded_file.read()
      st.write("filename:", uploaded_file.name)
-     plt.imshow(bytes_data)
+     img = Image.open(bytes_data)
+     plt.imshow(img)
      plt.show()
      
 length = 12
