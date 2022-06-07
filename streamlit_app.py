@@ -45,6 +45,8 @@ if not image_file is None:
      #############################################################################################
 if submitted:
      if len(images) > 0:
+          
+          yhats = final_fun_2(images)          
 
           predicted_class_names = ['This is a: '+str(class_names[i]) for i in yhats]
 
