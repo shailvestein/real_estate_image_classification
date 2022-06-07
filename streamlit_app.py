@@ -31,6 +31,7 @@ if image_file is not None:
      img = Image.open(image_file)
      st.image(img, width=300)
      img = rf.preprocess_image(img)
+     img = tf.expand_dims(img, axis=0)
      yhat = model.predict(img)
      
      predicted_class_names = class_names[np.argmax(yhat)]
