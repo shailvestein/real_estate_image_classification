@@ -26,6 +26,7 @@ def final_fun_2(images):
      
      return yhats
 
+st.title("Real Estate Images Scene Classifier")
 #############################################################################################
 with st.form('uploader'):
      # st.write(Enter your review below)
