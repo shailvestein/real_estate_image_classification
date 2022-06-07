@@ -2,6 +2,7 @@ import streamlit as st
 import pickle
 import keras
 import rei_functions as rf
+from PIL import Image
 
 #############################################################################################
 #############################################################################################
@@ -27,5 +28,5 @@ for uploaded_file in uploaded_files:
      st.write("filename:", uploaded_file.name)
      st.write(bytes_data)
      
-length = len(bytes_data)
+length = 12
 st.text(f"{length} images uploaded!")
