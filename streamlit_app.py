@@ -26,8 +26,8 @@ def final_fun_2(images):
      
      return yhats
 
-st.title("Real Estate Images Scene Classifier")
-st.title("Using Deep Learning")
+st.title("Real Estate Images Scene Classifier Using Deep Learning")
+# st.title("")
 st.text("This classifier is used to classify real estate scene")
 st.text("like bedroom, livingroom, bathroom, kitchen, frontyard and backyard")
 #############################################################################################
