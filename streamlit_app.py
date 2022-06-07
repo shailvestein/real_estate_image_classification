@@ -38,16 +38,14 @@ if not image_file is None:
 if submitted and len(images) > 0:
 
      # batch_images = np.array([np.stack(img) for img in images])
-     batch_images = np.stack(images, axis=0)
-     st.text(batch_images.shape)   
-     
+     batch_images = np.stack(images, axis=0)    
 
-          
      yhats = model.predict(batch_images)
      yhats = np.argmax(yhats, axis=1)
 
-      
-     st.image(images, caption=yhats)
+     predicted_class_names = [class_names[i] for i in yhats]
+     
+     st.image(images, caption=predicted_class_names)
 
      
 else:
