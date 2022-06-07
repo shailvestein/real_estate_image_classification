@@ -43,6 +43,10 @@ batch_images = np.stack(images, axis=0)
 st.text(batch_images.shape)   
 # st.image(img, width=300)
 
+yhats = model.predict(batch_images)
+yhats = np.argmax(yhats, axis=1)
+st.text(yhats)
+
 # img = tf.expand_dims(img, axis=0)
 # shape = img.shape
 # st.text(shape)
