@@ -30,7 +30,9 @@ st.title("Real Estate Images Scene Classifier Using Deep Learning")
 # st.title("")
 st.text("Here you can classify real estate scene like bedroom,")
 st.text("livingroom, bathroom, kitchen, frontyard and backyard.")
-st.text("You just need to upload a new real estate image here..")
+st.text("You just need to upload a new real estate image here")
+st.text("It performs some mathematical magic on images and tells ")
+st.text("which scene type it is.")
 #############################################################################################
 with st.form('uploader'):
      # st.write(Enter your review below)
