@@ -2,6 +2,7 @@ import streamlit as st
 import pickle
 import keras
 import rei_functions as rf
+import numpy as np
 from PIL import Image
 
 #############################################################################################
@@ -27,6 +28,7 @@ for uploaded_file in uploaded_files:
      bytes_data = uploaded_file.read()
      st.write("filename:", uploaded_file.name)
      img = Image.open(bytes_data)
+     img = np.array(img)
      st.image([img])
      
 length = 12
