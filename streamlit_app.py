@@ -40,20 +40,21 @@ if len(images) > 0:
      batch_images = np.stack(images, axis=0)
      st.text(batch_images.shape)   
 
-yhats = model.predict(batch_images)
-yhats = np.argmax(yhats, axis=1)
-st.text(yhats)
+if len(batch_images) == 4:
+     yhats = model.predict(batch_images)
+     yhats = np.argmax(yhats, axis=1)
+     st.text(yhats)
 
-#############################################################################################
-col = 3
-row = len(images)//col + 1
-rem = len(images) % col
-st.text(row)
-if rem > 0:
-     row += 1
+     #############################################################################################
+     col = 3
+     row = len(images)//col + 1
+     rem = len(images) % col
+     st.text(row)
+     if rem > 0:
+          row += 1
 
-# plt.subplots(
+     # plt.subplots(
 
-st.text(row)
-st.text(rem)
+     st.text(row)
+     st.text(rem)
 
