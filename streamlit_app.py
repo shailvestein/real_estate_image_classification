@@ -19,7 +19,7 @@ model = rf.get_model_ready()
 model.load_weights('./efficientNetB0_model.h5')
 
 #############################################################################################
-with st.form():
+with st.form('uploader'):
      # st.write(Enter your review below)
      image_file = st.file_uploader("Upload Your Image", type=['jpg', 'png', 'jpeg'], accept_multiple_files=True)
      # st.write("filename:", image_file.name)
