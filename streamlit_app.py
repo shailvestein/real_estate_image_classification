@@ -31,14 +31,17 @@ image_file = st.file_uploader("Upload Your Image", type=['jpg', 'png', 'jpeg'], 
 images = []
 if image_file is not None:
      for image in image_file:
-          images.append(Image.open(image))
+          img = Image.open(image)
+          img = rf.preprocess_image(img)
+          img = img.resize(TARGET_SHAPE)
+          images.append(img)
 
 
 st.text(len(images))
-          
+batch_images = np.array([np.stack(img) for img in images])
+st.text(images.shape)   
 # st.image(img, width=300)
-# img = rf.preprocess_image(img)
-# img = img.resize(TARGET_SHAPE)
+
 # img = tf.expand_dims(img, axis=0)
 # shape = img.shape
 # st.text(shape)
