@@ -5,8 +5,10 @@ import rei_functions as rf
 
 #############################################################################################
 #############################################################################################
+# loading class names list
+class_names = rf.get_class_names()
 
-# trained model
+# loading trained model
 model = rf.get_model_ready()
 model.load_weights('./efficientNetB0_model.h5')
 
