@@ -52,5 +52,5 @@ if submitted:
      
      
 else:
-     st.text('Please upload an image!')
+     st.text('')
 
