@@ -17,10 +17,10 @@ INPUT_SHAPE = (H,W,3)
 TARGET_SHAPE = (H,W)
 NUM_CLASSES = 6
   
-  
-with open('./class_list.pkl', 'rb') as f:
-    class_names = pkl.load(f)
-
+def get_class_names():
+    with open('./class_list.pkl', 'rb') as f:
+        class_names = pkl.load(f)
+    return class_names
  
 #############################################################################
 #############################################################################
