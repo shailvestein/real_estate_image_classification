@@ -34,7 +34,7 @@ if not image_file is None:
           images.append(img)
 
      #############################################################################################
-
+if len(images) > 0:
      st.text(len(images))
      # batch_images = np.array([np.stack(img) for img in images])
      batch_images = np.stack(images, axis=0)
