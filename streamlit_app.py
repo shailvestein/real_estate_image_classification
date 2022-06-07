@@ -6,6 +6,7 @@ import numpy as np
 from PIL import Image
 import tensorflow as tf
 
+TARGET_SHAPE = (224,224)
 #############################################################################################
 #############################################################################################
 # loading class names list
@@ -32,6 +33,7 @@ if image_file is not None:
      img = Image.open(image_file)
      st.image(img, width=300)
      img = rf.preprocess_image(img)
+     img = img.resize(TARGET_SHAPE)
      img = tf.expand_dims(img, axis=0)
      shape = img.shape
      st.text(shape)
