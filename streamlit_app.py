@@ -21,9 +21,9 @@ model.load_weights('./efficientNetB0_model.h5')
 #############################################################################################
 with st.form('uploader'):
      # st.write(Enter your review below)
-     image_file = st.file_uploader("Upload Your Image", type=['jpg', 'png', 'jpeg'], accept_multiple_files=True)
+     image_file = st.file_uploader("Upload Your Real Estate Image Here", type=['jpg', 'png', 'jpeg'], accept_multiple_files=True)
      # st.write("filename:", image_file.name)
-     submitted = st.form_submit_button('Get image scene names..')
+     submitted = st.form_submit_button('Get image scene name..')
 
 
 if not image_file is None:
