@@ -27,12 +27,16 @@ image_file = st.file_uploader("Upload Your Image", type=['jpg', 'png', 'jpeg'])
 
 # st.write("filename:", image_file.name)
 
-original_image = Image.open(image_file)
-original_image = np.array(original_image)
+if image_file is not None:
+     img = Image.open(image_file)
+     st.image(img)
 
-img = Image.open(original_image)
-img = np.array(img)
-st.image([img])
+# original_image = Image.open(image_file)
+# original_image = np.array(original_image)
+
+# img = Image.open(original_image)
+# img = np.array(img)
+# st.image([img])
      
-length = 12
-st.text(f"{length} images uploaded!")
+# length = 12
+# st.text(f"{length} images uploaded!")
