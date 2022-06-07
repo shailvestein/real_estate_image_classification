@@ -24,8 +24,9 @@ model.load_weights('./efficientNetB0_model.h5')
 image_file = st.file_uploader("Upload Your Image", type=['jpg', 'png', 'jpeg'], accept_multiple_files=True)
 # st.write("filename:", image_file.name)
 
-images = []
+
 if not image_file is None:
+     images = []
      for image in image_file:
           img = Image.open(image)
           img = rf.preprocess_image(img)
