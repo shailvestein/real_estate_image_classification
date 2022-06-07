@@ -27,8 +27,7 @@ for uploaded_file in uploaded_files:
      bytes_data = uploaded_file.read()
      st.write("filename:", uploaded_file.name)
      img = Image.open(bytes_data)
-     plt.imshow(img)
-     plt.show()
+     st.image([img])
      
 length = 12
 st.text(f"{length} images uploaded!")
