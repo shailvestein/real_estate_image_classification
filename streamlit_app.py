@@ -44,7 +44,8 @@ if len(batch_images) == 4:
      yhats = model.predict(batch_images)
      yhats = np.argmax(yhats, axis=1)
      st.text(yhats)
-
+else:
+     st.text('Please upload an real estate image!')
      #############################################################################################
      col = 3
      row = len(images)//col + 1
