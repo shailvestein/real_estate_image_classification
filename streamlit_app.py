@@ -18,6 +18,14 @@ class_names = rf.get_class_names()
 model = rf.get_model_ready()
 model.load_weights('./efficientNetB0_model.h5')
 
+def final_fun_2(images):
+     batch_images = np.stack(images, axis=0)    
+
+     yhats = model.predict(batch_images)
+     yhats = np.argmax(yhats, axis=1)
+     
+     return yhats
+
 #############################################################################################
 with st.form('uploader'):
      # st.write(Enter your review below)
@@ -37,12 +45,6 @@ if not image_file is None:
      #############################################################################################
 if submitted:
      if len(images) > 0:
-
-          # batch_images = np.array([np.stack(img) for img in images])
-          batch_images = np.stack(images, axis=0)    
-
-          yhats = model.predict(batch_images)
-          yhats = np.argmax(yhats, axis=1)
 
           predicted_class_names = ['This is a: '+str(class_names[i]) for i in yhats]
 
