@@ -17,12 +17,9 @@ INPUT_SHAPE = (H,W,3)
 TARGET_SHAPE = (H,W)
 NUM_CLASSES = 6
   
-def load_class_labels_list(path='./class_list.pkl'):
-    with open(path, 'rb') as f:
-        class_list = pkl.load(f)
-    return class_list
-
-class_list = load_class_labels_list()
+  
+with open('./class_list.pkl', 'rb') as f:
+    class_names = pkl.load(f)
 
  
 #############################################################################
