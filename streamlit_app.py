@@ -19,10 +19,11 @@ model = rf.get_model_ready()
 model.load_weights('./efficientNetB0_model.h5')
 
 #############################################################################################
-
-# st.write(Enter your review below)
-image_file = st.file_uploader("Upload Your Image", type=['jpg', 'png', 'jpeg'], accept_multiple_files=True)
-# st.write("filename:", image_file.name)
+with st.form():
+     # st.write(Enter your review below)
+     image_file = st.file_uploader("Upload Your Image", type=['jpg', 'png', 'jpeg'], accept_multiple_files=True)
+     # st.write("filename:", image_file.name)
+     submitted = st.form_submit_button('Get image scene names..')
 
 
 if not image_file is None:
@@ -34,17 +35,20 @@ if not image_file is None:
           images.append(img)
 
      #############################################################################################
-if len(images) > 0:
-     st.text(len(images))
-     # batch_images = np.array([np.stack(img) for img in images])
-     batch_images = np.stack(images, axis=0)
-     st.text(batch_images.shape)   
+if submitted:
+     if len(images) > 0:
+          st.text(len(images))
+          # batch_images = np.array([np.stack(img) for img in images])
+          batch_images = np.stack(images, axis=0)
+          st.text(batch_images.shape)   
+     else:
+          st.text('Please upload an image!')
 
-if len(batch_images) == 4:
+          
      yhats = model.predict(batch_images)
      yhats = np.argmax(yhats, axis=1)
      st.text(yhats)
-else:
+
      st.text('Please upload an real estate image!')
      #############################################################################################
      col = 3
