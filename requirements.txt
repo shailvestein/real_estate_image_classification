@@ -1,7 +1,7 @@
 tensorflow
 streamlit
 pickle5
-opencv-python
+pillow
 opencv-python-headless
 matplotlib
 seaborn
