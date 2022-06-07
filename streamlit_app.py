@@ -56,6 +56,11 @@ if submitted and len(images) > 0:
      st.text(row)
      if rem > 0:
           row += 1
+      
+     for i in range(1, len(images)):
+          plt.subplot(row, col, i)
+          plt.title(i)
+          plt.show()
 
      # plt.subplots(
 
