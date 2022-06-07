@@ -58,8 +58,9 @@ if submitted and len(images) > 0:
           row += 1
       
      for i in range(1, len(images)):
-          plt.subplot(row, col, i)
-          plt.title(i)
+          fig, ax = plt.subplot(row, col, i)
+          ax.imshow(images[i])
+          ax.title(i)
           plt.show()
 
      # plt.subplots(
