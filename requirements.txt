@@ -1,8 +1,7 @@
 tensorflow==2.5.0
 streamlit
 pickle5
-opencv-python
-python3-opencv
+opencv-python3
 opencv-python-headless
 matplotlib
 seaborn
