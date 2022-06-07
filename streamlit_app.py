@@ -7,8 +7,9 @@ from PIL import Image
 import tensorflow as tf
 
 TARGET_SHAPE = (224,224)
+
 #############################################################################################
-#############################################################################################
+
 # loading class names list
 class_names = rf.get_class_names()
 
@@ -16,13 +17,7 @@ class_names = rf.get_class_names()
 model = rf.get_model_ready()
 model.load_weights('./efficientNetB0_model.h5')
 
-##############################################################################################
-##############################################################################################
-
-# Below we are defining a streamlit webpage which will take user input and predict polarity of taken review
-
-
-
+#############################################################################################
 
 # st.write(Enter your review below)
 image_file = st.file_uploader("Upload Your Image", type=['jpg', 'png', 'jpeg'], accept_multiple_files=True)
@@ -36,6 +31,7 @@ if image_file is not None:
           img = img.resize(TARGET_SHAPE)
           images.append(img)
 
+#############################################################################################
 
 st.text(len(images))
 # batch_images = np.array([np.stack(img) for img in images])
@@ -47,20 +43,11 @@ yhats = model.predict(batch_images)
 yhats = np.argmax(yhats, axis=1)
 st.text(yhats)
 
-# img = tf.expand_dims(img, axis=0)
-# shape = img.shape
-# st.text(shape)
-# yhat = model.predict(img)
+#############################################################################################
 
-# predicted_class_names = class_names[np.argmax(yhat)]
-# st.text(predicted_class_names)
+num = len(images)//3
+rem = len(images) % 3
 
-# original_image = Image.open(image_file)
-# original_image = np.array(original_image)
+st.text(num)
+st.text(rem)
 
-# img = Image.open(original_image)
-# img = np.array(img)
-# st.image([img])
-     
-# length = 12
-# st.text(f"{length} images uploaded!")
