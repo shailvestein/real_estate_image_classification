@@ -39,7 +39,7 @@ if image_file is not None:
 
 st.text(len(images))
 batch_images = np.array([img for img in images])
-st.text(images.shape)   
+st.text(batch_images.shape)   
 # st.image(img, width=300)
 
 # img = tf.expand_dims(img, axis=0)
