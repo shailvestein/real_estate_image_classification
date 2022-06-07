@@ -1,9 +1,6 @@
 tensorflow==2.5.0
 streamlit
 pickle5
-ffmpeg
-libsm6
-libxext6
 opencv-python
 python3-opencv
 opencv-python-headless
