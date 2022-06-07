@@ -38,7 +38,7 @@ if image_file is not None:
 
 
 st.text(len(images))
-batch_images = np.array([np.stack(img) for img in images])
+batch_images = np.array([img for img in images])
 st.text(images.shape)   
 # st.image(img, width=300)
 
