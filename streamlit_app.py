@@ -23,9 +23,8 @@ def get_class_names():
 # loading class names list
 class_names = get_class_names()
 
-
-@st.cache
 # getting model ready
+@st.cache
 def get_model_ready():
     # loading pre-trained efficientNetB0
     efn = EfficientNetB0(include_top=False, 
