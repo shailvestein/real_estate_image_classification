@@ -78,7 +78,23 @@ with st.form('uploader'):
      # submit button
      submitted = st.form_submit_button('Get image scene name..')
 
-
+# function to predict class labels on images
+def final_fun_2(images):
+     # stacking images to form (batch_size, height, width, channel) format
+     st.text(len(images))
+     batch_images = np.stack(images, axis=0)    
+     # classifiying images
+     st.text(batch_images.shape)
+        
+     st.text(model.summary())
+     yhats = model.predict(batch_images)
+     st.text(yhats)
+     yhats = np.argmax(yhats, axis=1)
+     t.text(yhats)
+     # returning class names index
+     return yhats
+    
+    
 # appending images into list if there are more than 1 images uploaded
 # if image_file is not none
 if not image_file is None:
@@ -96,22 +112,7 @@ if not image_file is None:
           images.append(img)
 
         
-# function to predict class labels on images
-def final_fun_2(images):
-     # stacking images to form (batch_size, height, width, channel) format
-     st.text(len(images))
-     batch_images = np.stack(images, axis=0)    
-     # classifiying images
-     st.text(batch_images.shape)
-        
-     st.text(model.summary())
-     yhats = model.predict(batch_images)
-     st.text(yhats)
-     yhats = np.argmax(yhats, axis=1)
-     t.text(yhats)
-     # returning class names index
-     return yhats
-    
+
     
     
 # if get images scene name button clicked
