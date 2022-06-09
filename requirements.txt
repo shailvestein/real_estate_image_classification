@@ -1,7 +1,4 @@
-tensorflow
+tensorflow==2.5.0
 streamlit
 pickle5
 pillow
-opencv-python-headless
-matplotlib
-seaborn
