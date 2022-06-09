@@ -11,9 +11,11 @@ import matplotlib.pyplot as plt
 TARGET_SHAPE = (224,224)
 
 # loading class names list
+@st.cache
 class_names = rf.get_class_names()
 
 # loading trained model
+@st.cache
 model = rf.get_model_ready()
 model.load_weights('./efficientNetB0_model.h5')
 
