@@ -61,16 +61,6 @@ def get_model_ready():
 model = get_model_ready()
 
 
-# function to predict class labels on images
-def final_fun_2(images):
-     # stacking images to form (batch_size, height, width, channel) format
-     batch_images = np.stack(images, axis=0)    
-     # classifiying images
-     yhats = model.predict(batch_images)
-     yhats = np.argmax(yhats, axis=1)
-     # returning class names index
-     return yhats
-
 # title for the webpage
 st.title("Real Estate Images Scene Classifier Using Deep Learning")
 # text to describe about web app
@@ -104,6 +94,21 @@ if not image_file is None:
           # appending to the list
           images.append(img)
 
+        
+# function to predict class labels on images
+def final_fun_2(images):
+     # stacking images to form (batch_size, height, width, channel) format
+     st.text(len(images))
+     batch_images = np.stack(images, axis=0)    
+     # classifiying images
+     st.text(batch_images.shape)
+     yhats = model.predict(batch_images)
+     yhats = np.argmax(yhats, axis=1)
+     # returning class names index
+     return yhats
+    
+    
+    
 # if get images scene name button clicked
 if submitted:
      # check if image is uploaded
