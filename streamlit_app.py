@@ -58,8 +58,7 @@ def get_model_ready():
     model = efficientNet_model.load_weights('./efficientNetB0_model.h5')
     return model
 
-# loading trained model
-model = get_model_ready()
+
 
 
 # title for the webpage
@@ -77,6 +76,9 @@ with st.form('uploader'):
      image_file = st.file_uploader("Upload Your Real Estate Image Here", type=['jpg', 'png', 'jpeg'], accept_multiple_files=True)
      # submit button
      submitted = st.form_submit_button('Get image scene name..')
+
+# loading trained model
+model = get_model_ready()
 
 # function to predict class labels on images
 def final_fun_2(images):
@@ -113,7 +115,7 @@ if not image_file is None:
 
         
 
-    
+
     
 # if get images scene name button clicked
 if submitted:
