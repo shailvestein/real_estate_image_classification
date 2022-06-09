@@ -55,8 +55,8 @@ def get_model_ready():
     # intialising model
     efficientNet_model = Model(inputs=inputs, outputs=outputs, name='efficientNet_based_model')
     # loading trained weights
-    model = efficientNet_model.load_weights('./efficientNetB0_model.h5')
-    return model
+    efficientNet_model.load_weights('./efficientNetB0_model.h5')
+    return efficientNet_model
 
 
 
