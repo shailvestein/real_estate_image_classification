@@ -1,23 +1,66 @@
 import streamlit as st
-import pickle
-import keras
-import rei_functions as rf
 import numpy as np
-from PIL import Image
 import tensorflow as tf
-import matplotlib.pyplot as plt
+import pickle as pkl
 
-# shape of input image to resize
-TARGET_SHAPE = (224,224)
+from PIL import Image
+from tensorflow.keras.applications.efficientnet import EfficientNetB0, preprocess_input
+from tensorflow.keras.layers import Input, Dense, GlobalAveragePooling2D, Dropout
+from tensorflow.keras.models import Model
 
-# loading class names list
+#### Constants
+H, W = 224, 224
+INPUT_SHAPE = (H,W,3)
+TARGET_SHAPE = (H,W)
+NUM_CLASSES = 6
+
+# function to get class names
 @st.cache
-class_names = rf.get_class_names()
+def get_class_names():
+    with open('./class_list.pkl', 'rb') as f:
+        class_names = pkl.load(f)
+    return class_names
+# loading class names list
+class_names = get_class_names()
+
+
+@st.cache
+# getting model ready
+def get_model_ready():
+    # loading pre-trained efficientNetB0
+    efn = EfficientNetB0(include_top=False, 
+                           weights='imagenet', 
+                           input_shape=INPUT_SHAPE)
+
+    # making each layers not to train
+    for layers in efn.layers:
+        layers.trainable=False
+
+    # input layer
+    inputs = Input(shape=INPUT_SHAPE, name='input_shape')
+    # passing input layer to resnet 50
+    x = efn(inputs)
+    # Global pulling layer
+    x = GlobalAveragePooling2D(name='global_pooling')(x)
+    # Dense layer
+    x = Dense(1024, activation='relu', name='dense_1')(x)
+    # Dropout layer
+    x = Dropout(0.5, name='dropout_1')(x)
+    # Dense layer
+    x = Dense(64, activation='relu', name='dense_2')(x)
+    # Dropout layer
+    x = Dropout(0.5, name='dropout_2')(x)
+    # output layer
+    outputs = Dense(NUM_CLASSES, activation='softmax', name='output')(x)
+
+    # intialising model
+    efficientNet_model = Model(inputs=inputs, outputs=outputs, name='efficientNet_based_model')
+
+    return efficientNet_model.load_weights('./efficientNetB0_model.h5')
 
 # loading trained model
-@st.cache
-model = rf.get_model_ready()
-model.load_weights('./efficientNetB0_model.h5')
+model = get_model_ready()
+
 
 # function to predict class labels on images
 def final_fun_2(images):
@@ -45,6 +88,7 @@ with st.form('uploader'):
      # submit button
      submitted = st.form_submit_button('Get image scene name..')
 
+
 # appending images into list if there are more than 1 images uploaded
 # if image_file is not none
 if not image_file is None:
@@ -55,7 +99,7 @@ if not image_file is None:
           # reading image file
           img = Image.open(image)
           # applying preprocessing function
-          img = rf.preprocess_image(img)
+          img = preprocess_input(img)
           # resizing images
           img = img.resize(TARGET_SHAPE)
           # appending to the list
