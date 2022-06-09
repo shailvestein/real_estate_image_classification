@@ -102,6 +102,8 @@ def final_fun_2(images):
      batch_images = np.stack(images, axis=0)    
      # classifiying images
      st.text(batch_images.shape)
+        
+     st.text(model.summary())
      yhats = model.predict(batch_images)
      st.text(yhats)
      yhats = np.argmax(yhats, axis=1)
