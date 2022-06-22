@@ -120,13 +120,12 @@ if submitted:
           yhats = final_fun_2(images)
           preds = np.argmax(yhats, axis=1)
           
-          # list to pass st.image() to print predicted class label name
+          # list to pass st.image() to print predicted class label with model probability
           predicted_class_names = list()
           for yh, pr in zip(yhats, preds):
               a = yh[pr] * 100
               conf = np.round_(a=a, decimals=2)
               predicted_class_names.append(str(class_names[pr]) + ': ' + str(conf) + '%')
-#           predicted_class_names = [str(class_names[pr]) + ': ' + str((np.round_(a=yh[pr], decimals=4))*100) + '% '  for yh, pr in zip(yhats, preds)]
           # printing image and respected predicted class label
           st.image(images, caption=predicted_class_names)
      else:
