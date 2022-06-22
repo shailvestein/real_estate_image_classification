@@ -121,7 +121,7 @@ if submitted:
           preds = np.argmax(yhats, axis=1)
           
           # list to pass st.image() to print predicted class label name
-          predicted_class_names = ['This is a: '+str(class_names[pr])+ ' '+ str(yh[pr]) for yh, pr in zip(yhats, preds)]
+          predicted_class_names = [str(round(yh[pr], 4) *100)+'% '+str(class_names[pr])  for yh, pr in zip(yhats, preds)]
           # printing image and respected predicted class label
           st.image(images, caption=predicted_class_names)
      else:
