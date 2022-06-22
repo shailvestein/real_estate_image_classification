@@ -88,7 +88,6 @@ def final_fun_2(images):
      batch_images = np.stack(images, axis=0)    
      # classifiying images
      yhats = model.predict(batch_images)
-     yhats = np.argmax(yhats, axis=1)
      # returning class names index
      return yhats
     
@@ -118,9 +117,11 @@ if submitted:
      # check if image is uploaded
      if len(images) > 0:
           # if image is uploaded pass this to final_fun_2() for classifying scene type
-          yhats = final_fun_2(images)          
+          yhats = final_fun_2(images)
+          preds = np.argmax(yhats, axis=1)
+          
           # list to pass st.image() to print predicted class label name
-          predicted_class_names = ['This is a: '+str(class_names[i]) for i in yhats]
+          predicted_class_names = ['This is a: '+str(class_names[pr])+ ' '+ str(yh[pr]) for yh, pr in zip(yhats, preds)]
           # printing image and respected predicted class label
           st.image(images, caption=predicted_class_names)
      else:
