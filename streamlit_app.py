@@ -121,7 +121,11 @@ if submitted:
           preds = np.argmax(yhats, axis=1)
           
           # list to pass st.image() to print predicted class label name
-          predicted_class_names = [str(class_names[pr]) + ': ' + str((np.round_(a=yh[pr], decimals=4))*100) + '% '  for yh, pr in zip(yhats, preds)]
+          predicted_class_names = list()
+          for yh, pr in zip(yhats, preds):
+              conf = np.round_(a=yh[pr], decimals=4)
+              predicted_class_names.append(str(class_names[pr]) + ': ' + str(conf*100) + '%')
+#           predicted_class_names = [str(class_names[pr]) + ': ' + str((np.round_(a=yh[pr], decimals=4))*100) + '% '  for yh, pr in zip(yhats, preds)]
           # printing image and respected predicted class label
           st.image(images, caption=predicted_class_names)
      else:
