@@ -123,7 +123,7 @@ if submitted:
           # list to pass st.image() to print predicted class label name
           predicted_class_names = list()
           for yh, pr in zip(yhats, preds):
-                a = yh[pr] * 100
+              a = yh[pr] * 100
               conf = np.round_(a=a, decimals=4)
               predicted_class_names.append(str(class_names[pr]) + ': ' + str(conf) + '%')
 #           predicted_class_names = [str(class_names[pr]) + ': ' + str((np.round_(a=yh[pr], decimals=4))*100) + '% '  for yh, pr in zip(yhats, preds)]
